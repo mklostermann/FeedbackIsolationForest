@@ -356,7 +356,9 @@ void Forest::writeScores(doubleframe *dt, char fName[]){
 	bool comma = false;
 	for(int t = 0; t < this->ntree; ++t){
 		for(unsigned int depLim = 1; depLim <= MAX; ++depLim){
-			if(comma) outFile << ","; comma = true;
+			if(comma)
+				outFile << ",";
+			comma = true;
 			outFile << "t" << t+1 << "d" << depLim;
 		}
 	}
@@ -366,7 +368,9 @@ void Forest::writeScores(doubleframe *dt, char fName[]){
 		for(int t = 0; t < this->ntree; ++t){
 			std::vector<double> scores = this->trees[t]->getPatternScores(dt->data[i], MAX);
 			for(unsigned int depLim = 0; depLim < MAX; ++depLim){
-				if(comma) outFile << ","; comma = true;
+				if(comma)
+					outFile << ",";
+				comma = true;
 				if(depLim < scores.size())
 					outFile << scores[depLim];
 			}
